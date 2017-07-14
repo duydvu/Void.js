@@ -1,0 +1,18 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #000;
+}
+#dataTable {
+  position: relative;
+  width: 50%;
+  left: 25%;
+  border: 5px solid #fff;
+  border-radius: 5px;
+}
+#dataTable td {
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  border: 1px solid #fff;
+}
