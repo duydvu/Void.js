@@ -2,9 +2,11 @@ html, body {
   height: 100%;
   margin: 0;
   background: #000;
+  color: #fff;
 }
 #dataTable {
   position: relative;
+  top: 50px;
   width: 50%;
   left: 25%;
   border: 5px solid #fff;
@@ -15,4 +17,22 @@ html, body {
   text-align: center;
   color: #fff;
   border: 1px solid #fff;
+}
+
+#display, #binarySearchTree {
+  position: relative;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+.node {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  line-height: 50px;
+  background: #fff;
+  color: blue;
+  border-radius: 50%;
+  text-align: center;
 }

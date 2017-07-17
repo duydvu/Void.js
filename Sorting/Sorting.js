@@ -1,12 +1,12 @@
 /**
  * Implementation of INSERTION SORTING ALGORITHM
  * @param {Object[]} list - list of data to sort;
- * @param {function(Object1, Object2)} operator - this function is used to determine which data is "greater" or "less",
+ * @param {function(Object1, Object2)} [operator] - this function is used to determine which data is "greater" or "less",
  * Returns true if Object1 is "greater" than Object2, otherwise returns false;
  * @param {bool} [reverse=false] - this controls the order of the list,
  * Set to false means the order is from "low" to "high", and vice versa;
  */
-function insertionSort(list, operator, reverse=false) {
+function insertionSort(list, operator=function(obj1, obj2){return obj1>obj2;}, reverse=false) {
   for(var i=1; i<list.length; i++) {
     var x=list[i];
     var j=i-1;
@@ -23,12 +23,12 @@ function insertionSort(list, operator, reverse=false) {
 /**
  * Implementation of BUBBLE SORT ALGORITHM
  * @param {Object[]} list - list of data to sort;
- * @param {function(Object1, Object2)} operator - this function is used to determine which data is "greater" or "less",
+ * @param {function(Object1, Object2)} [operator] - this function is used to determine which data is "greater" or "less",
  * Returns true if Object1 is "greater" than Object2, otherwise returns false;
  * @param {bool} [reverse=false] - this controls the order of the list,
  * Set to false means the order is from "low" to "high", and vice versa;
  */
-function bubbleSort(list, operator, reverse=false) {
+function bubbleSort(list, operator=function(obj1, obj2){return obj1>obj2;}, reverse=false) {
   var n=list.length;
   var newn;
   do {
@@ -57,12 +57,12 @@ function bubbleSort(list, operator, reverse=false) {
  * - iLeftChild(i) = 2 * i + 1 ;
  * - iRightChild(i) = 2 * i + 2 ;
  * @param {Object[]} list - list of data to sort;
- * @param {function(Object1, Object2)} operator - this function is used to determine which data is "greater" or "less",
+ * @param {function(Object1, Object2)} [operator] - this function is used to determine which data is "greater" or "less",
  * Returns true if Object1 is "greater" than Object2, otherwise returns false;
  * @param {bool} [reverse=false] - this controls the order of the list,
  * Set to false means the order is from "low" to "high", and vice versa;
  */
-function heapSort(list, operator, reverse=false) {
+function heapSort(list, operator=function(obj1, obj2){return obj1>obj2;}, reverse=false) {
   // First we build the heap in the array so that the largest value is at the root
   // <heapify>
   var count=list.length; // store length of the list
