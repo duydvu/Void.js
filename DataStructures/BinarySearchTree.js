@@ -12,6 +12,7 @@ function BinarySearchTree(value, level, leftChild=null, rightChild=null) {
   this.leftChild=leftChild;
   this.rightChild=rightChild;
 }
+
 /**
  * The BST builder function
  * @param {Object[]} list - The original unordered array used to build the BST;
@@ -34,11 +35,77 @@ function toBinarySearchTree(list, start=0, end=list.length-1, operator=function(
     // 1 length case
     if(start==end)
       return new BinarySearchTree(list[start], level);
+    // n > 1 length case
     var middle=Math.floor((start+end)/2);               // index of the root is at the middle
     var root=new BinarySearchTree(list[middle], level);
     root.leftChild=buildBST(start, middle-1, level+1);  // left child from start to middle-1
     root.rightChild=buildBST(middle+1, end, level+1);   // right child from middle+1 to end
     return root;
   }
-  return buildBST(start, end, 0);
+  var result=buildBST(start, end, 0);                   // result of the BST building function
+  result.operator=operator;                             // operator used in comparison of the BST
+  return result;
+}
+
+/**
+ * Find function for the BST
+ * @return {Object} - The node that has value equals to the item;
+ * @param {Object} item - The item to be found in the BST;
+ */
+BinarySearchTree.prototype.find = function(item) {
+  // comparison operator
+  var compare=this.operator;
+  // compare(obj1,obj2) return true if obj1 > obj2
+
+  // now for the finding function
+  function f(bst) {
+    // The condition below means
+    // item <= this.value && item >=this.value
+    // so only the case when item == this.value that the condition passes
+    if(!compare(item,bst.value) && !compare(bst.value,item))
+      return bst;
+    // if item > this.value then find item in the this.rightChild
+    if(compare(item,bst.value)) {
+      if(bst.rightChild!=null)
+        return f(bst.rightChild);
+      else return null;   // No items match
+    }
+    // else when item < this.value, not "<=" because the case item == this.value has been handled above
+    else {
+      if(bst.leftChild!=null)
+        return f(bst.leftChild);
+      else return null;   // No items match
+    }
+  }
+  return f(this);
+}
+
+/**
+ * Add a node to the BST
+ * @param {Object} element - The element will be added the BST;
+ */
+BinarySearchTree.prototype.add = function(element) {
+  // comparison operator
+  var compare=this.operator;
+
+  // the real add funstion
+  function a(bst) {
+    // if element > this.value then add to the rightChild
+    if(compare(element,bst.value)) {
+      if(bst.rightChild==null) {
+        return bst.rightChild=new BinarySearchTree(element, bst.level+1);
+      }
+      // if this.rightChild != null
+      return a(bst.rightChild);
+    }
+    // if element > this.value then add to the leftChild
+    else {
+      if(bst.leftChild==null) {
+        return bst.leftChild=new BinarySearchTree(element, bst.level+1);
+      }
+      // if this.leftChild != null
+      return a(bst.leftChild);
+    }
+  }
+  return a(this);
 }

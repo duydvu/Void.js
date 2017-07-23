@@ -19,7 +19,12 @@ html, body {
   border: 1px solid #fff;
 }
 
-#display, #binarySearchTree {
+#display {
+  position: relative;
+  width: 100%;
+  overflow: scroll;
+}
+ #binarySearchTree {
   position: relative;
   display: flex;
   display: -webkit-flex;

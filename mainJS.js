@@ -56,6 +56,7 @@ $.getJSON("Data/numbers.js", function(result) {
     array.push(result.array[i]);
   }
   var bst=toBinarySearchTree(array);
+  console.log(bst.add(1));
   function displayBST(BST) {
     if(BST==null)
       return;
@@ -81,6 +82,9 @@ $.getJSON("Data/numbers.js", function(result) {
   }
   displayBST(bst);
   for(var i=0; i<=Math.floor(Math.log(array.length)/Math.log(2)); i++) {
-    $(".node"+i).css("margin-top", 50*i+"px");
+    $(".node"+i).css("margin-top", 60*i+"px");
   }
+  $("#binarySearchTree").css("width", array.length*50+"px");
+
+  console.log(bst.find(491));
 });
