@@ -1,0 +1,22 @@
+{
+  "name": "void",
+  "version": "1.0.0",
+  "description": "This is a Javascript repository that I use to practice JS programming skill and Algorithm implementation.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duyisking/Void.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duyisking/Void.js/issues"
+  },
+  "homepage": "https://github.com/duyisking/Void.js#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
