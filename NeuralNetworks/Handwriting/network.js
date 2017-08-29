@@ -14,20 +14,20 @@ module.exports = {
     this.biases = [];                       // matrix of biases
     this.weights = [];                      // matrix of weights
     // random initialization
-    // for(var i = 0; i < sizes.length - 1; i++) {
-    //   this.biases[i] = [];
-    //   this.weights[i] =[];
-    //   for(var j = 0; j < sizes[i + 1]; j++) {
-    //     this.biases[i].push([Math.random() * 2 - 1]);
-    //     this.weights[i][j] =[];
-    //     for(var k = 0; k < sizes[i]; k++)
-    //       this.weights[i][j].push(Math.random() * 2 - 1);
-    //   }
-    // }
+    for(var i = 0; i < sizes.length - 1; i++) {
+      this.biases[i] = [];
+      this.weights[i] =[];
+      for(var j = 0; j < sizes[i + 1]; j++) {
+        this.biases[i].push([randn_bm()]);
+        this.weights[i][j] =[];
+        for(var k = 0; k < sizes[i]; k++)
+          this.weights[i][j].push(randn_bm());
+      }
+    }
 
-    var o = JSON.parse(fs.readFileSync('./NeuralNetworks/Handwriting/data/TrainedSet.txt'));
-    this.biases = o.biases;
-    this.weights = o.weights;
+    // var o = JSON.parse(fs.readFileSync('./NeuralNetworks/Handwriting/data/TrainedSet.txt'));
+    // this.biases = o.biases;
+    // this.weights = o.weights;
 
     /**
       * The stochastic gradient descent function (SGD) used for training
@@ -209,4 +209,16 @@ function indexOfMax(arr) {
     }
 
     return maxIndex;
+}
+
+/**
+  * Normal distribution
+  * Via: Stackoverflow
+  * https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
+  */
+function randn_bm() {
+  var u = 0, v = 0;
+  while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+  while(v === 0) v = Math.random();
+  return Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
 }

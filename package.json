@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/duyisking/Void.js#readme",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "mathjs": "^3.16.2",
+    "synaptic": "^1.1.0"
   }
 }
